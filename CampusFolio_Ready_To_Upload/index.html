@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFolio — Smart Student Academic & Portfolio Management System</title>
+  <meta name="description" content="A modern, unified academic management and professional portfolio platform for university students, faculty, and administrators.">
+
+  <!-- Google Fonts & Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js for Interactive Progress Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       1. LANDING PAGE VIEW
+       ======================================================== -->
+  <div id="landing-view">
+    <!-- Landing Navigation Header -->
+    <header class="landing-header">
+      <div class="brand-logo">
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>Campus<span style="color: var(--accent-cyan);">Folio</span></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#statistics">Statistics</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="portfolio.html?usn=1MS21CS084" target="_blank">Student Showcase</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline btn-sm" onclick="window.app.toggleTheme()" title="Toggle Dark/Light Mode">
+          <i class="fas fa-sun theme-icon"></i>
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="window.app.openLoginModal('STUDENT')">
+          <i class="fas fa-user-graduate"></i> Student Login
+        </button>
+        <button class="btn btn-primary btn-sm" onclick="window.app.openLoginModal('FACULTY')">
+          <i class="fas fa-user-shield"></i> Faculty / Admin Login
+        </button>
+      </div>
+    </header>
+
+    <!-- Quick Role Switcher Floating Demo Banner -->
+    <div class="demo-switcher-banner" style="margin-top: var(--navbar-height);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="badge badge-cyan"><i class="fas fa-bolt"></i> Instant Demo Login</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">Click any user to explore with live demonstration data:</span>
+      </div>
+      <div class="demo-pills">
+        <button class="demo-pill-btn" onclick="window.app.switchUser('STUDENT', 'STD001')">
+          <i class="fas fa-user-graduate" style="color: var(--accent-cyan);"></i> Student (Shreenidhi N)
+        </button>
+        <button class="demo-pill-btn" onclick="window.app.switchUser('STUDENT', 'STD004')">
+          <i class="fas fa-exclamation-triangle" style="color: var(--accent-rose);"></i> Student with Attendance Alert (Rahul)
+        </button>
+        <button class="demo-pill-btn" onclick="window.app.switchUser('FACULTY', 'FAC001')">
+          <i class="fas fa-chalkboard-teacher" style="color: var(--accent-emerald);"></i> Faculty (Dr. Arvind Sharma)
+        </button>
+        <button class="demo-pill-btn" onclick="window.app.switchUser('ADMIN', 'ADM001')">
+          <i class="fas fa-user-shield" style="color: var(--accent-purple);"></i> Dean / Admin (Dr. Ramesh)
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-glow-sphere"></div>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 6px 14px; border-radius: var(--radius-full); margin-bottom: 20px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); display: inline-block;"></span>
+            <span style="font-size: 0.825rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px;">Next-Gen University Academic Platform</span>
+          </div>
+          <h1>Your Academic Journey, <br><span class="text-gradient">All in One Place.</span></h1>
+          <p>
+            Seamlessly track academic marks, continuous evaluations, and attendance with shortage warnings. Build an industry-ready, shareable portfolio of your engineering projects and certifications without ever exposing private records.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-primary btn-lg" onclick="window.app.switchUser('STUDENT', 'STD001')">
+              <i class="fas fa-rocket"></i> Launch Student Dashboard
+            </button>
+            <a href="portfolio.html?usn=1MS21CS084" target="_blank" class="btn btn-secondary btn-lg">
+              <i class="fas fa-external-link-alt"></i> View Public Portfolio
+            </a>
+          </div>
+          <div class="hero-features-strip">
+            <span><i class="fas fa-check-circle" style="color: var(--accent-emerald);"></i> Role-Based Access</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent-emerald);"></i> Official PDF Marks Cards</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent-emerald);"></i> Live 75% Attendance Alerts</span>
+          </div>
+        </div>
+
+        <!-- Hero Preview Mockup Card -->
+        <div class="hero-preview-card">
+          <div class="preview-header">
+            <div class="preview-user-badge">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" class="preview-avatar" alt="Student Avatar">
+              <div>
+                <div style="font-weight: 700; font-size: 1rem;">Shreenidhi N</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">1MS21CS084 &bull; CSE Sem 6</div>
+              </div>
+            </div>
+            <span class="badge badge-emerald">Enrolled &bull; Active</span>
+          </div>
+          <div class="preview-stats-row">
+            <div class="preview-stat-box">
+              <div class="stat-val">9.38</div>
+              <div class="stat-lbl">CGPA</div>
+            </div>
+            <div class="preview-stat-box">
+              <div class="stat-val">9.45</div>
+              <div class="stat-lbl">SGPA</div>
+            </div>
+            <div class="preview-stat-box">
+              <div class="stat-val" style="color: var(--accent-emerald);">88.9%</div>
+              <div class="stat-lbl">Attendance</div>
+            </div>
+          </div>
+          <div style="background: var(--bg-elevated); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+              <span><strong>CS601</strong> Full-Stack Web Technologies</span>
+              <span class="badge badge-emerald">Grade O (96/100)</span>
+            </div>
+            <div class="progress-track" style="margin: 0;">
+              <div class="progress-fill cyan" style="width: 96%;"></div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; font-size: 0.8rem; color: var(--text-muted);">
+            <span><i class="fas fa-shield-alt" style="color: var(--accent-cyan);"></i> Faculty Verified Continuous Evaluation</span>
+            <button class="btn btn-sm btn-cyan" onclick="window.app.switchUser('STUDENT', 'STD001')">Open Demo &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">10,000+</div>
+          <div class="stat-text">Active Engineering Students</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98.4%</div>
+          <div class="stat-text">Graduation & Placement Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">450+</div>
+          <div class="stat-text">Accredited University Faculty</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-text">Confidentiality & Privacy Guaranteed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Showcase -->
+    <section id="features" class="features-section">
+      <div class="section-title-wrap">
+        <span class="subtitle">Comprehensive Academic Ecosystem</span>
+        <h2>Designed for Students, Faculty & Administrators</h2>
+        <p style="color: var(--text-secondary); font-size: 1.05rem;">
+          Everything needed for university governance, continuous assessment, attendance tracking, and professional recruiter showcasing.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-file-invoice"></i></div>
+          <h3>Academic Marks Management</h3>
+          <p>Instant access to internal evaluations (IA-1, IA-2, IA-3), lab practicals, assignments, and Semester End Exams with official downloadable PDF grade cards.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-user-clock"></i></div>
+          <h3>Attendance Shortage Warnings</h3>
+          <p>Real-time subject-wise tracking with configurable 75% thresholds and smart calculators showing how many consecutive classes are needed to restore eligibility.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-id-card"></i></div>
+          <h3>Public Portfolio Builder</h3>
+          <p>Showcase projects, GitHub repositories, technical skills, and certifications via a shareable recruiter URL that strictly protects confidential marks and phone numbers.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Faculty Grading Console</h3>
+          <p>Authorized professors can record class attendance, enter internal marks, grade assignments, and publish semester results with full audit trail security.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-sliders-h"></i></div>
+          <h3>Administrator Governance</h3>
+          <p>Manage departments, configure grading scales, adjust university attendance thresholds, monitor system security logs, and enroll student cohorts.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
+          <h3>Granular Role Authorization</h3>
+          <p>Strict separation of concerns. Students have read-only access to published marks, faculty manage assigned courses, and administrators oversee campus operations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Footer Section -->
+    <footer id="about" style="background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); padding: 60px 5% 30px;">
+      <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <span>Campus<span style="color: var(--accent-cyan);">Folio</span></span>
+          </div>
+          <p style="color: var(--text-secondary); max-width: 480px; font-size: 0.95rem; line-height: 1.6;">
+            CampusFolio is the next-generation Student Academic & Portfolio Management System built for colleges and universities to empower students, streamline faculty workflows, and simplify administration.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-weight: 700; margin-bottom: 16px;">Demonstration Accounts</h4>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary); line-height: 2;">
+            <li><a href="#" onclick="window.app.switchUser('STUDENT', 'STD001')">&bull; Shreenidhi N (Student, CSE)</a></li>
+            <li><a href="#" onclick="window.app.switchUser('STUDENT', 'STD004')">&bull; Rahul Verma (Shortage Alert)</a></li>
+            <li><a href="#" onclick="window.app.switchUser('FACULTY', 'FAC001')">&bull; Dr. Arvind Sharma (Faculty)</a></li>
+            <li><a href="#" onclick="window.app.switchUser('ADMIN', 'ADM001')">&bull; Dr. H. V. Ramesh (Dean/Admin)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight: 700; margin-bottom: 16px;">Campus Resources</h4>
+          <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary); line-height: 2;">
+            <li><a href="portfolio.html?usn=1MS21CS084" target="_blank">&bull; Public Portfolio Demo</a></li>
+            <li><a href="#" onclick="window.app.switchUser('STUDENT', 'STD001'); window.app.switchTab('calendar');">&bull; Examination Timetable</a></li>
+            <li><a href="#" onclick="window.app.switchUser('STUDENT', 'STD001'); window.app.switchTab('placements');">&bull; Placement Preparation</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 24px;">
+        &copy; 2026 CampusFolio. Built for Apex Institute of Science & Technology. All rights reserved.
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================
+       2. AUTHENTICATED APP SHELL VIEW
+       ======================================================== -->
+  <div id="app-view">
+    <div class="app-layout">
+      <!-- Collapsible Sidebar -->
+      <aside class="app-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <div class="logo-icon" style="width: 32px; height: 32px; font-size: 1rem;"><i class="fas fa-graduation-cap"></i></div>
+            <span>Campus<span style="color: var(--accent-cyan);">Folio</span></span>
+          </div>
+          <button class="btn btn-sm btn-outline" onclick="window.app.showLanding()" title="Return to Homepage">
+            <i class="fas fa-home"></i>
+          </button>
+        </div>
+
+        <!-- Sidebar Role & Profile Badge -->
+        <div class="sidebar-role-badge" id="sidebar-role-badge">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- Dynamic Role-Specific Navigation Menu -->
+        <nav class="sidebar-nav" id="sidebar-dynamic-nav">
+          <!-- Populated by app.js depending on active role -->
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="btn btn-sm btn-outline" onclick="window.app.toggleTheme()" title="Toggle Theme">
+            <i class="fas fa-sun theme-icon"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" onclick="window.app.showLanding()">
+            <i class="fas fa-sign-out-alt"></i> Exit Demo
+          </button>
+        </div>
+      </aside>
+
+      <!-- App Main Content Area -->
+      <main class="app-main">
+        <!-- Sticky Topbar -->
+        <header class="app-topbar">
+          <div class="topbar-left">
+            <button class="menu-toggle-btn" id="menu-toggle-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="breadcrumbs">
+              <span>CampusFolio</span>
+              <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+              <strong id="breadcrumb-current" style="color: var(--text-primary);">Dashboard</strong>
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <!-- Fast Role Switcher Dropdown -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;"><i class="fas fa-sync-alt"></i> Switch Demo User:</span>
+              <select id="quick-role-select" class="form-control" style="padding: 6px 12px; font-size: 0.85rem; width: 230px; border-color: rgba(6, 182, 212, 0.4);">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <!-- Notifications Bell -->
+            <button class="notification-bell-btn" onclick="window.app.toggleNotificationModal()" title="Notifications">
+              <i class="far fa-bell"></i>
+              <span class="notification-badge" id="notif-badge"></span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Main Body Content -->
+        <div class="content-body">
+          
+          <!-- ==============================================
+               STUDENT TABS
+               ============================================== -->
+
+          <!-- 1. Student Overview Tab -->
+          <div id="tab-overview" class="tab-pane active">
+            <!-- Warning Banner (Appears if attendance < 75%) -->
+            <div id="student-warning-area"></div>
+
+            <!-- Student Profile Header Banner -->
+            <div id="student-overview-header"></div>
+
+            <!-- KPI Metric Cards -->
+            <div id="student-overview-kpis"></div>
+
+            <!-- Analytics Chart & Schedule Split Grid -->
+            <div class="dash-grid-2col">
+              <!-- Academic Progress Chart Card -->
+              <div class="card-box">
+                <div class="card-header-row">
+                  <div class="card-title"><i class="fas fa-chart-line" style="color: var(--accent-cyan);"></i> Semester SGPA Performance Trend</div>
+                  <span class="badge badge-cyan">Sem 1 - Sem 6</span>
+                </div>
+                <div style="position: relative; height: 260px; width: 100%;">
+                  <canvas id="sgpaTrendChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Upcoming Exams & Deadlines Card -->
+              <div class="card-box">
+                <div class="card-header-row">
+                  <div class="card-title"><i class="far fa-calendar-alt" style="color: var(--accent-cyan);"></i> Upcoming Schedule</div>
+                  <button class="btn btn-sm btn-outline" onclick="window.app.switchTab('calendar')">View All</button>
+                </div>
+                <div id="student-upcoming-events"></div>
+              </div>
+            </div>
+
+            <!-- Recent Academic Announcements -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-bullhorn" style="color: var(--accent-cyan);"></i> Official College Announcements</div>
+                <span class="badge badge-emerald">Campus Feed</span>
+              </div>
+              <div id="student-announcements-list"></div>
+            </div>
+          </div>
+
+          <!-- 2. Student Marks & Results Tab -->
+          <div id="tab-marks" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Academic Marks & Semester Results</h2>
+                <div class="page-subtitle">Continuous Internal Assessment (CIE) and Semester End Examination (SEE) Records</div>
+              </div>
+              <button class="btn btn-primary" onclick="window.app.openMarksCardModal()">
+                <i class="fas fa-file-pdf"></i> Download Official Grade Card
+              </button>
+            </div>
+
+            <!-- Marks Summary Banner -->
+            <div class="card-box" id="marks-summary-box" style="background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(59,130,246,0.05) 100%); border-color: rgba(6,182,212,0.3);"></div>
+
+            <!-- Current Semester Marks Table -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-table" style="color: var(--accent-cyan);"></i> Current Semester Subject Evaluation (6th Sem)</div>
+                <span class="badge badge-emerald"><i class="fas fa-check-circle"></i> Official Published Results</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Subject Code</th>
+                      <th>Subject Title</th>
+                      <th>Credits</th>
+                      <th>IA-1 (30)</th>
+                      <th>IA-2 (30)</th>
+                      <th>Assignment (20)</th>
+                      <th>SEE (50)</th>
+                      <th>Total (100)</th>
+                      <th>Grade & Point</th>
+                    </tr>
+                  </thead>
+                  <tbody id="student-marks-table-body">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Previous Semesters Result Archive -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-history" style="color: var(--accent-cyan);"></i> Previous Semesters Result Archive</div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Semester</th>
+                      <th>Examination Session</th>
+                      <th>Credits Registered</th>
+                      <th>SGPA</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>5th Semester</td><td>Jan 2024</td><td>24</td><td><strong>9.35</strong></td><td><span class="badge badge-emerald">Passed</span></td><td><button class="btn btn-sm btn-outline" onclick="window.app.openMarksCardModal()">View Grade Card</button></td></tr>
+                    <tr><td>4th Semester</td><td>Aug 2023</td><td>24</td><td><strong>9.50</strong></td><td><span class="badge badge-emerald">Passed</span></td><td><button class="btn btn-sm btn-outline" onclick="window.app.openMarksCardModal()">View Grade Card</button></td></tr>
+                    <tr><td>3rd Semester</td><td>Feb 2023</td><td>24</td><td><strong>9.42</strong></td><td><span class="badge badge-emerald">Passed</span></td><td><button class="btn btn-sm btn-outline" onclick="window.app.openMarksCardModal()">View Grade Card</button></td></tr>
+                    <tr><td>2nd Semester</td><td>Aug 2022</td><td>20</td><td><strong>9.25</strong></td><td><span class="badge badge-emerald">Passed</span></td><td><button class="btn btn-sm btn-outline" onclick="window.app.openMarksCardModal()">View Grade Card</button></td></tr>
+                    <tr><td>1st Semester</td><td>Feb 2022</td><td>20</td><td><strong>9.18</strong></td><td><span class="badge badge-emerald">Passed</span></td><td><button class="btn btn-sm btn-outline" onclick="window.app.openMarksCardModal()">View Grade Card</button></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Student Attendance Tab -->
+          <div id="tab-attendance" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Attendance Monitoring System</h2>
+                <div class="page-subtitle">Subject-wise class attendance, conducted hours, and exam eligibility status</div>
+              </div>
+              <div class="badge badge-cyan" style="font-size: 0.85rem; padding: 8px 16px;">
+                <i class="fas fa-info-circle"></i> Minimum University Threshold: 75%
+              </div>
+            </div>
+
+            <!-- Attendance Overview Stats -->
+            <div id="attendance-overview-banner"></div>
+
+            <!-- Subject-wise Attendance Breakdown -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-list-check" style="color: var(--accent-cyan);"></i> Subject-Wise Attendance Log</div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Subject Code</th>
+                      <th>Subject Name</th>
+                      <th>Conducted</th>
+                      <th>Attended</th>
+                      <th>Missed</th>
+                      <th style="width: 220px;">Percentage</th>
+                      <th>Eligibility Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="attendance-table-body">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Student Portfolio Builder Tab -->
+          <div id="tab-portfolio" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Professional Portfolio Builder</h2>
+                <div class="page-subtitle">Curate your technical projects, skills, certifications, and shareable public profile</div>
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <button class="btn btn-secondary" onclick="window.app.copyPortfolioLink()">
+                  <i class="fas fa-copy"></i> Copy Public Link
+                </button>
+                <a href="portfolio.html?usn=1MS21CS084" target="_blank" class="btn btn-cyan">
+                  <i class="fas fa-external-link-alt"></i> Preview Public Profile
+                </a>
+              </div>
+            </div>
+
+            <!-- Shareable URL Bar -->
+            <div class="portfolio-preview-banner">
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;"><i class="fas fa-globe" style="color: var(--accent-cyan);"></i> Your Shareable Recruiter Link:</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">Publicly accessible by recruiters and companies. Strictly keeps private marks and attendance secure.</div>
+              </div>
+              <div style="display: flex; gap: 10px; width: 100%; max-width: 550px;">
+                <input type="text" id="shareable-portfolio-url" class="form-control" readonly style="font-family: var(--font-mono); font-size: 0.85rem;">
+                <button class="btn btn-primary" onclick="window.app.copyPortfolioLink()"><i class="fas fa-copy"></i></button>
+              </div>
+            </div>
+
+            <!-- Profile Details Form -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-user-edit" style="color: var(--accent-cyan);"></i> Personal Details & Bio</div>
+                <button class="btn btn-sm btn-cyan" onclick="window.app.savePortfolioChanges()"><i class="fas fa-save"></i> Save Changes</button>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" id="port-name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Professional Tagline</label>
+                  <input type="text" id="port-tagline" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">About Me (Bio)</label>
+                <textarea id="port-bio" rows="3" class="form-control"></textarea>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label"><i class="fab fa-github"></i> GitHub Profile</label>
+                  <input type="text" id="port-github" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="fab fa-linkedin"></i> LinkedIn Profile</label>
+                  <input type="text" id="port-linkedin" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="fab fa-twitter"></i> Twitter / X</label>
+                  <input type="text" id="port-twitter" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="fas fa-code"></i> LeetCode Profile</label>
+                  <input type="text" id="port-leetcode" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills Manager -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-code" style="color: var(--accent-cyan);"></i> Technical Skills & Proficiency</div>
+                <button class="btn btn-sm btn-outline" onclick="window.app.addSkillPrompt()"><i class="fas fa-plus"></i> Add Skill</button>
+              </div>
+              <div id="port-skills-list" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+            </div>
+
+            <!-- Engineering Projects Manager -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-laptop-code" style="color: var(--accent-cyan);"></i> Featured Engineering Projects</div>
+                <button class="btn btn-sm btn-primary" onclick="window.app.openAddProjectModal()"><i class="fas fa-plus"></i> Add New Project</button>
+              </div>
+              <div class="project-card-grid" id="port-projects-list"></div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-certificate" style="color: var(--accent-cyan);"></i> Certifications & Credentials</div>
+              </div>
+              <div id="port-certs-list" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            </div>
+          </div>
+
+          <!-- 5. Academic Calendar Tab -->
+          <div id="tab-calendar" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Academic Calendar & Exam Timetable</h2>
+                <div class="page-subtitle">Schedule of continuous assessments, laboratory vivas, and semester-end theory examinations</div>
+              </div>
+              <span class="badge badge-cyan">Even Semester 2026</span>
+            </div>
+            <div id="academic-calendar-events"></div>
+          </div>
+
+          <!-- 6. Placement Preparation Tab -->
+          <div id="tab-placements" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Campus Placement & Career Readiness Cell</h2>
+                <div class="page-subtitle">Tier-1 hiring drives, company interview questions, coding roadmaps, and resume templates</div>
+              </div>
+              <span class="badge badge-emerald">2025 Graduating Batch</span>
+            </div>
+
+            <div class="dash-grid-3col">
+              <div class="card-box">
+                <div class="card-title" style="margin-bottom: 14px;"><i class="fas fa-building" style="color: var(--accent-cyan);"></i> Active Campus Drives</div>
+                <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
+                  <div style="padding: 10px 0; border-bottom: 1px solid var(--border-subtle);">
+                    <strong>Google India</strong> &bull; SDE Intern (2025)<br>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Eligibility: CGPA &ge; 8.0 &bull; Deadline: May 28</span>
+                  </div>
+                  <div style="padding: 10px 0; border-bottom: 1px solid var(--border-subtle);">
+                    <strong>Microsoft</strong> &bull; Cloud Engineer Intern<br>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Eligibility: CGPA &ge; 7.5 &bull; Deadline: May 30</span>
+                  </div>
+                  <div style="padding: 10px 0;">
+                    <strong>Atlassian</strong> &bull; Associate Software Engineer<br>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Eligibility: CGPA &ge; 7.5 &bull; Deadline: June 4</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-box">
+                <div class="card-title" style="margin-bottom: 14px;"><i class="fas fa-terminal" style="color: var(--accent-cyan);"></i> Coding Interview Prep</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8;">
+                  <p>&bull; <strong>NeetCode 150:</strong> Must-solve curated pattern questions on Arrays, Binary Trees, Graphs & Dynamic Programming.</p>
+                  <p>&bull; <strong>System Design Primer:</strong> High-level architectures, load balancing, caching strategies, and database sharding.</p>
+                  <p>&bull; <strong>Mock Interviews:</strong> Weekly peer mocks conducted by the campus ACM chapter every Saturday.</p>
+                </div>
+              </div>
+
+              <div class="card-box">
+                <div class="card-title" style="margin-bottom: 14px;"><i class="fas fa-file-alt" style="color: var(--accent-cyan);"></i> Resume Guidelines</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8;">
+                  <p>&bull; Always maintain a 1-page clean ATS-compliant resume.</p>
+                  <p>&bull; Include your verified <strong>CampusFolio public portfolio link</strong> at the top of your resume header.</p>
+                  <p>&bull; Quantify impact in project bullets using the Google XYZ formula: <em>"Accomplished [X] as measured by [Y] by doing [Z]"</em>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               FACULTY TABS
+               ============================================== -->
+
+          <!-- 1. Faculty Assigned Courses -->
+          <div id="tab-faculty-classes" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Faculty Course Management</h2>
+                <div class="page-subtitle">Assigned theory courses, laboratories, and student cohorts for Even Semester 2026</div>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px;" id="faculty-courses-grid">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- 2. Faculty Marks & Grading Tab -->
+          <div id="tab-faculty-marks" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Continuous Evaluation & Marks Entry</h2>
+                <div class="page-subtitle">Enter Internal Assessments (IA-1, IA-2), Assignments, and Semester End Exam marks</div>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: center;">
+                <select id="faculty-subject-select" class="form-control" style="width: 280px;"></select>
+                <button class="btn btn-primary" onclick="window.app.publishAllMarksForCurrentSubject()">
+                  <i class="fas fa-bullhorn"></i> Publish All Marks
+                </button>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-pen-nib" style="color: var(--accent-cyan);"></i> Enrolled Student Marks Matrix</div>
+                <span class="badge badge-amber"><i class="fas fa-lock"></i> Faculty Authentication Active</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>USN</th>
+                      <th>Student Name</th>
+                      <th>IA-1 (30)</th>
+                      <th>IA-2 (30)</th>
+                      <th>Assignment (20)</th>
+                      <th>SEE (50)</th>
+                      <th>Total (100)</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="faculty-marks-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Faculty Record Attendance -->
+          <div id="tab-faculty-attendance" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Class Attendance Logger</h2>
+                <div class="page-subtitle">Update total conducted hours and student attendance counts</div>
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <select id="faculty-att-subject-select" class="form-control" style="width: 280px;"></select>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-clipboard-user" style="color: var(--accent-cyan);"></i> Course Attendance Sheet</div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>USN</th>
+                      <th>Student Name</th>
+                      <th>Total Classes</th>
+                      <th>Attended Classes</th>
+                      <th>Current %</th>
+                      <th>Save Record</th>
+                    </tr>
+                  </thead>
+                  <tbody id="faculty-att-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Faculty Announcements -->
+          <div id="tab-faculty-announcements" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Department Announcements Publisher</h2>
+                <div class="page-subtitle">Broadcast official circulars, exam notices, and event invites to students</div>
+              </div>
+            </div>
+
+            <div class="card-box" style="margin-bottom: 28px;">
+              <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 16px;">Create New Announcement</h3>
+              <form onsubmit="window.app.publishNewAnnouncement(event)">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 14px;">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Announcement Title</label>
+                    <input type="text" id="new-ann-title" class="form-control" required placeholder="e.g. IA-3 Revised Schedule for 6th Sem">
+                  </div>
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Category</label>
+                    <select id="new-ann-cat" class="form-control">
+                      <option>Examinations</option>
+                      <option>Academic</option>
+                      <option>Events</option>
+                      <option>Placements</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Content</label>
+                  <textarea id="new-ann-content" rows="3" class="form-control" required placeholder="Full details of the announcement..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Publish Announcement</button>
+              </form>
+            </div>
+
+            <div id="faculty-announcements-list"></div>
+          </div>
+
+          <!-- ==============================================
+               ADMINISTRATOR TABS
+               ============================================== -->
+
+          <!-- 1. Admin Overview -->
+          <div id="tab-admin-overview" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">University Administration Portal</h2>
+                <div class="page-subtitle">Campus-wide governance, student records, faculty allocation, and system security</div>
+              </div>
+              <span class="badge badge-rose"><i class="fas fa-user-shield"></i> Dean of Academics</span>
+            </div>
+
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-top">
+                  <span class="kpi-label">Total Students</span>
+                  <div class="kpi-icon" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);"><i class="fas fa-user-graduate"></i></div>
+                </div>
+                <div class="kpi-val" id="adm-stat-students">10</div>
+                <div class="kpi-subtext">Active Enrolled Profiles</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-top">
+                  <span class="kpi-label">Active Faculty</span>
+                  <div class="kpi-icon" style="background: rgba(16,185,129,0.15); color: var(--accent-emerald);"><i class="fas fa-chalkboard-teacher"></i></div>
+                </div>
+                <div class="kpi-val" id="adm-stat-faculty">3</div>
+                <div class="kpi-subtext">Professors & Instructors</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-top">
+                  <span class="kpi-label">Departments</span>
+                  <div class="kpi-icon" style="background: rgba(59,130,246,0.15); color: var(--accent-blue);"><i class="fas fa-building"></i></div>
+                </div>
+                <div class="kpi-val" id="adm-stat-depts">5</div>
+                <div class="kpi-subtext">CSE, AI&DS, ISE, ECE, ME</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-top">
+                  <span class="kpi-label">Total Courses</span>
+                  <div class="kpi-icon" style="background: rgba(168,85,247,0.15); color: var(--accent-purple);"><i class="fas fa-book"></i></div>
+                </div>
+                <div class="kpi-val" id="adm-stat-subjects">10</div>
+                <div class="kpi-subtext">Active Curriculum Subjects</div>
+              </div>
+            </div>
+
+            <!-- Recent Audit Logs feed -->
+            <div class="card-box">
+              <div class="card-header-row">
+                <div class="card-title"><i class="fas fa-shield-alt" style="color: var(--accent-cyan);"></i> Real-Time System Security & Audit Activity</div>
+                <button class="btn btn-sm btn-outline" onclick="window.app.switchTab('admin-audit')">View Full Audit Log</button>
+              </div>
+              <div id="admin-recent-logs"></div>
+            </div>
+          </div>
+
+          <!-- 2. Admin Student Directory -->
+          <div id="tab-admin-students" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Student Directory & Cohort Management</h2>
+                <div class="page-subtitle">View, enroll, edit, and toggle active status for enrolled college students</div>
+              </div>
+              <button class="btn btn-primary" onclick="window.app.openAddStudentModal()">
+                <i class="fas fa-user-plus"></i> Enroll New Student
+              </button>
+            </div>
+
+            <div class="card-box">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>USN</th>
+                      <th>Student Name & Email</th>
+                      <th>Department</th>
+                      <th>Semester</th>
+                      <th>CGPA</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-students-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Admin Faculty Directory -->
+          <div id="tab-admin-faculty" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Faculty & Staff Directory</h2>
+                <div class="page-subtitle">Manage professors, department affiliations, and course assignments</div>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Faculty ID</th>
+                      <th>Faculty Name & Email</th>
+                      <th>Designation</th>
+                      <th>Department</th>
+                      <th>Assigned Subjects</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-faculty-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Admin Academic Settings -->
+          <div id="tab-admin-settings" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">Academic & Institutional Settings</h2>
+                <div class="page-subtitle">Configure university accreditation details, academic year, and attendance thresholds</div>
+              </div>
+            </div>
+
+            <div class="card-box" style="max-width: 800px;">
+              <form onsubmit="window.app.saveAdminSettings(event)">
+                <div class="form-group">
+                  <label class="form-label">Institution / College Name</label>
+                  <input type="text" id="cfg-inst-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">University Affiliation / Accreditation</label>
+                  <input type="text" id="cfg-univ-affil" class="form-control" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                  <div class="form-group">
+                    <label class="form-label">Current Academic Year</label>
+                    <input type="text" id="cfg-acad-year" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Minimum Attendance Warning Threshold (%)</label>
+                    <input type="number" id="cfg-att-threshold" min="50" max="100" class="form-control" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save System Configuration</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- 5. Admin Audit Logs -->
+          <div id="tab-admin-audit" class="tab-pane">
+            <div class="page-header-row">
+              <div>
+                <h2 class="page-title">System Audit & Security Logs</h2>
+                <div class="page-subtitle">Immutable records of all grade publications, attendance updates, policy changes, and session switches</div>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Role</th>
+                      <th>User</th>
+                      <th>Action</th>
+                      <th>Details</th>
+                      <th>Session IP</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-audit-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODALS & DIALOGS
+       ======================================================== -->
+
+  <!-- 1. Official Marks Card Modal (Printable PDF Format) -->
+  <div class="modal-overlay" id="marks-card-modal">
+    <div class="modal-box" style="max-width: 950px;">
+      <div class="modal-header no-print">
+        <h3><i class="fas fa-file-pdf" style="color: var(--accent-cyan);"></i> Official University Grade Card</h3>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-sm btn-cyan" onclick="window.app.printMarksCard()"><i class="fas fa-print"></i> Print / Save as PDF</button>
+          <button class="btn btn-sm btn-secondary" onclick="window.app.closeModal('marks-card-modal')">&times; Close</button>
+        </div>
+      </div>
+      <div class="modal-body" id="printable-marks-area" style="background: #ffffff; padding: 20px;">
+        <!-- Filled dynamically by app.js -->
+      </div>
+      <div class="modal-footer no-print">
+        <button class="btn btn-secondary" onclick="window.app.closeModal('marks-card-modal')">Close</button>
+        <button class="btn btn-primary" onclick="window.app.printMarksCard()"><i class="fas fa-download"></i> Download / Print Grade Card</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Add Project Modal -->
+  <div class="modal-overlay" id="add-project-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Add Engineering Project to Portfolio</h3>
+        <button onclick="window.app.closeModal('add-project-modal')" style="color: var(--text-muted); font-size: 1.2rem;">&times;</button>
+      </div>
+      <form onsubmit="window.app.submitNewProject(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Project Title</label>
+            <input type="text" id="proj-title" class="form-control" required placeholder="e.g. Distributed Asynchronous Task Engine">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="proj-desc" rows="3" class="form-control" required placeholder="What problem does it solve and what was your technical contribution?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Technologies (comma separated)</label>
+            <input type="text" id="proj-tech" class="form-control" required placeholder="e.g. React, TypeScript, Node.js, PostgreSQL">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">GitHub Repository URL</label>
+              <input type="url" id="proj-github" class="form-control" placeholder="https://github.com/username/project">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Live Demo URL</label>
+              <input type="url" id="proj-live" class="form-control" placeholder="https://myproject.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Screenshot / Thumbnail URL (Optional)</label>
+            <input type="url" id="proj-image" class="form-control" placeholder="https://images.unsplash.com/...">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="window.app.closeModal('add-project-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Add to Portfolio</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Enroll New Student Modal (Admin) -->
+  <div class="modal-overlay" id="add-student-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Enroll New Student</h3>
+        <button onclick="window.app.closeModal('add-student-modal')" style="color: var(--text-muted); font-size: 1.2rem;">&times;</button>
+      </div>
+      <form onsubmit="window.app.submitNewStudent(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="adm-st-name" class="form-control" required placeholder="e.g. Aditi Sharma">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">University Seat Number (USN)</label>
+              <input type="text" id="adm-st-usn" class="form-control" required placeholder="e.g. 1MS21CS099">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Student Email</label>
+              <input type="email" id="adm-st-email" class="form-control" required placeholder="aditi.cs21@campus.edu">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Department</label>
+              <select id="adm-st-dept" class="form-control">
+                <option value="CSE">Computer Science & Engineering</option>
+                <option value="AI_DS">Artificial Intelligence & Data Science</option>
+                <option value="ISE">Information Science & Engineering</option>
+                <option value="ECE">Electronics & Communication</option>
+                <option value="ME">Mechanical Engineering</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Semester</label>
+              <select id="adm-st-sem" class="form-control">
+                <option value="6">6th Semester</option>
+                <option value="4">4th Semester</option>
+                <option value="2">2nd Semester</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="window.app.closeModal('add-student-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Enroll Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Notification Drawer Modal -->
+  <div class="modal-overlay" id="notification-modal">
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3><i class="far fa-bell" style="color: var(--accent-cyan);"></i> Notifications</h3>
+        <button onclick="window.app.closeModal('notification-modal')" style="color: var(--text-muted); font-size: 1.2rem;">&times;</button>
+      </div>
+      <div class="modal-body" id="notification-items-container" style="max-height: 400px; overflow-y: auto; padding: 12px;"></div>
+      <div class="modal-footer">
+        <button class="btn btn-sm btn-secondary" onclick="window.app.closeModal('notification-modal')">Dismiss</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. User Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-box" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 id="login-modal-title">Sign In to CampusFolio</h3>
+        <button onclick="window.app.closeModal('login-modal')" style="color: var(--text-muted); font-size: 1.2rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+          Choose a pre-authenticated role account or enter your institutional credentials:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+          <button class="btn btn-primary" onclick="window.app.switchUser('STUDENT', 'STD001'); window.app.closeModal('login-modal');">
+            <i class="fas fa-user-graduate"></i> Continue as Student (Shreenidhi N)
+          </button>
+          <button class="btn btn-secondary" onclick="window.app.switchUser('FACULTY', 'FAC001'); window.app.closeModal('login-modal');">
+            <i class="fas fa-chalkboard-teacher"></i> Continue as Faculty (Dr. Arvind Sharma)
+          </button>
+          <button class="btn btn-outline" onclick="window.app.switchUser('ADMIN', 'ADM001'); window.app.closeModal('login-modal');">
+            <i class="fas fa-user-shield"></i> Continue as Admin (Dr. H. V. Ramesh)
+          </button>
+        </div>
+        <div style="text-align: center; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+          Protected by CampusFolio University SSO & Multi-Factor Role Verification
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Quick helper on window for login modal
+    window.app = window.app || {};
+    window.app.openLoginModal = function(role) {
+      const modal = document.getElementById("login-modal");
+      if (modal) modal.classList.add("active");
+    };
+  </script>
+</body>
+</html>

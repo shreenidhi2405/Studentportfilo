@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portfolio | CampusFolio</title>
+  <meta name="description" content="Verified Student Academic and Professional Portfolio - CampusFolio">
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .pub-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .pub-hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pub-hero-glow {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pub-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--accent-cyan);
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+      object-fit: cover;
+    }
+    .pub-soc-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      font-size: 1.15rem;
+      transition: all var(--transition-fast);
+    }
+    .pub-soc-btn:hover {
+      background: var(--accent-cyan-glow);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+    .pub-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pub-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .pub-skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+    .pub-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .pub-project-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .pub-project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .pub-timeline-item {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 24px;
+      border-left: 2px solid var(--border-subtle);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+    .pub-certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .pub-cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="landing-header" style="position: relative;">
+    <div class="brand-logo">
+      <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+      <span>Campus<span style="color: var(--accent-cyan);">Folio</span></span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span class="badge badge-emerald" style="padding: 6px 14px;">
+        <i class="fas fa-check-circle"></i> Verified Student Profile
+      </span>
+      <button class="btn btn-sm btn-secondary" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-left"></i> Campus Portal
+      </button>
+    </div>
+  </nav>
+
+  <div class="pub-container">
+    <!-- Hero Profile Card -->
+    <div class="pub-hero-card glass-panel">
+      <div class="pub-hero-glow"></div>
+      <div style="display: flex; align-items: center; gap: 36px; flex-wrap: wrap; position: relative; z-index: 2;">
+        <img src="" id="pub-avatar" class="pub-avatar" alt="Student Profile Photo">
+        <div style="flex: 1; min-width: 280px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <h1 id="pub-name" style="font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; letter-spacing: -0.5px;">Student Name</h1>
+            <span class="badge badge-cyan" id="pub-dept">CSE &bull; Class of 2025</span>
+          </div>
+          <p id="pub-tagline" style="font-size: 1.15rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 14px;">Software Developer</p>
+          <p id="pub-bio" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; max-width: 650px;">Student Bio...</p>
+          
+          <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+            <div id="pub-socials" style="display: flex; gap: 10px;"></div>
+            <button class="btn btn-cyan" id="pub-resume-btn">
+              <i class="fas fa-download"></i> Download Verified Resume
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Skills Section -->
+    <div class="pub-section-title">
+      <i class="fas fa-laptop-code" style="color: var(--accent-cyan);"></i> Technical Skills & Competencies
+    </div>
+    <div class="pub-skills-grid" id="pub-skills-grid"></div>
+
+    <!-- Featured Projects Section -->
+    <div class="pub-section-title">
+      <i class="fas fa-project-diagram" style="color: var(--accent-cyan);"></i> Featured Engineering Projects
+    </div>
+    <div class="pub-projects-grid" id="pub-projects-grid"></div>
+
+    <!-- 2-Column: Internships & Education -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px;">
+      <div>
+        <div class="pub-section-title" style="font-size: 1.4rem;">
+          <i class="fas fa-briefcase" style="color: var(--accent-cyan);"></i> Work Experience & Internships
+        </div>
+        <div id="pub-experience-list"></div>
+      </div>
+      <div>
+        <div class="pub-section-title" style="font-size: 1.4rem;">
+          <i class="fas fa-user-graduate" style="color: var(--accent-cyan);"></i> Formal Education
+        </div>
+        <div id="pub-education-list"></div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="pub-section-title">
+      <i class="fas fa-certificate" style="color: var(--accent-cyan);"></i> Professional Certifications
+    </div>
+    <div class="pub-certs-grid" id="pub-certs-grid"></div>
+
+    <!-- Honors & Achievements -->
+    <div class="glass-panel" style="padding: 30px; margin-bottom: 48px;">
+      <div class="pub-section-title" style="font-size: 1.4rem; margin-bottom: 16px;">
+        <i class="fas fa-award" style="color: var(--accent-amber);"></i> Hackathons & Honors
+      </div>
+      <ul id="pub-achievements-list" style="list-style: none;"></ul>
+    </div>
+
+    <!-- Verified Recruiter Contact Form -->
+    <div class="glass-panel" style="padding: 36px; text-align: center;">
+      <h3 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 10px;">Interested in Hiring or Collaborating?</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px; max-width: 550px; margin-left: auto; margin-right: auto;">
+        Send a direct recruiter inquiry to this verified candidate through the CampusFolio Placement Cell.
+      </p>
+      <form onsubmit="event.preventDefault(); alert('Recruiter message sent! Candidate and placement officer notified.'); this.reset();" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px;">
+        <input type="text" placeholder="Your Name / Recruiter Name" class="form-control" required>
+        <input type="email" placeholder="Official Work Email (e.g. name@company.com)" class="form-control" required>
+        <textarea rows="3" placeholder="Message or Job Opportunity details..." class="form-control" required></textarea>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <i class="fas fa-paper-plane"></i> Send Inbound Message
+        </button>
+      </form>
+    </div>
+
+    <!-- Security & Privacy Disclaimer Footer -->
+    <footer style="margin-top: 60px; text-align: center; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-subtle); padding-top: 24px;">
+      <p><i class="fas fa-shield-alt" style="color: var(--accent-cyan);"></i> <strong>CampusFolio Privacy Assurance:</strong> This public portfolio contains only candidate-approved technical showcases and professional credentials. Confidential academic marks, internal evaluations, attendance metrics, and private phone numbers are strictly protected and never displayed publicly.</p>
+      <p style="margin-top: 6px;">&copy; 2026 CampusFolio &bull; Apex Institute of Science & Technology</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/public-portfolio.js"></script>
+</body>
+</html>
